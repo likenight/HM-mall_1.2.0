@@ -1,14 +1,15 @@
 <template>
 	<view>
 		<!-- 状态栏 -->
-		<view v-if="showHeader" class="status" :style="{ position: headerPosition,top:statusTop,opacity: afterHeaderOpacity}"></view>
+		<!-- <view v-if="showHeader" class="status" :style="{ position: headerPosition,top:statusTop,opacity: afterHeaderOpacity}"></view> -->
 		<!-- 顶部导航栏 -->
-		<!-- <view v-if="showHeader" class="header" :style="{ position: headerPosition,top:headerTop,opacity: afterHeaderOpacity }"> -->
+		<view v-if="showHeader" class="goods-list1">
 			<!-- 定位城市 -->
-		<!-- 	<view class="addr">
-				<view class="icon location"></view>
-				{{ city }}
-			</view> -->
+			<!-- <view class="goods-list"> -->
+				<view class="title1">
+				{{ shopName }}
+				</view>
+			<!-- </view> -->
 			<!-- 搜索框 -->
 			<!-- <view class="input-box">
 				<input
@@ -22,10 +23,10 @@
 			<!-- <view class="icon-btn">
 				<view class="icon yuyin-home"></view>
 				<view class="icon tongzhi" @tap="toMsg"></view>
-			</view>
-		</view> -->
+			</view> -->
+		</view> 
 		<!-- 占位 -->
-		<view v-if="showHeader" class="place"></view>
+		<!-- <view v-if="showHeader" class="place"></view> -->
 		<!-- 轮播图 -->
 		<view class="swiper">
 			<view class="swiper-box">
@@ -44,53 +45,15 @@
 				</view>
 			</view>
 		</view>
-		<!-- 分类列表 -->
-		<view class="category-list">
-			<view
-				class="category"
-				v-for="(row, index) in categoryList"
-				:key="index"
-				@tap="toCategory(row)"
-			>
-				<view class="img"><image :src="row.img"></image></view>
-				<view class="text">{{ row.name }}</view>
-			</view>
-		</view>
+		
 		<!-- 广告图 -->
 		<view class="banner"><image src="/static/img/banner.jpg"></image></view>
-		<!-- 活动区 -->
-		<view class="promotion">
-			<view class="text">优惠专区</view>
-			<view class="list">
-				<view
-					class="column"
-					v-for="(row, index) in Promotion"
-					@tap="toPromotion(row)"
-					:key="index"
-				>
-					<view class="top">
-						<view class="title">{{ row.title }}</view>
-						<view class="countdown" v-if="row.countdown">
-							<view>{{ row.countdown.h }}</view>
-							:
-							<view>{{ row.countdown.m }}</view>
-							:
-							<view>{{ row.countdown.s }}</view>
-						</view>
-					</view>
-					<view class="left">
-						<view class="ad">{{ row.ad }}</view>
-						<view class="into">点击进入</view>
-					</view>
-					<view class="right"><image :src="row.img"></image></view>
-				</view>
-			</view>
-		</view>
+		
 		<!-- 商品列表 -->
 		<view class="goods-list">
 			<view class="title">
 				<image src="/static/img/hua.png"></image>
-				猜你喜欢
+				精品婚纱
 				<image src="/static/img/hua.png"></image>
 			</view>
 			<view class="product-list">
@@ -121,13 +84,13 @@ var ggg ;
 export default {
 	data() {
 		return {
-			showHeader:false,
+			showHeader:true,
 			afterHeaderOpacity: 1,//不透明度
 			headerPosition: 'fixed',
 			headerTop:null,
 			statusTop:null,
 			nVueTitle:null,
-			city: '北京',
+			shopName: '------------王小姐的店--------------',
 			currentSwiper: 0,
 			// 轮播图片
 			swiperList: [
@@ -478,7 +441,7 @@ page{position: relative;background-color: #fff;}
 .header {
 	width: 92%;
 	padding: 0 4%;
-	height: 100upx;
+	height: 60upx;
 	display: flex;
 	align-items: center;
 	position: fixed;
@@ -491,20 +454,20 @@ page{position: relative;background-color: #fff;}
 	/*  #endif  */
 
 	.addr {
-		width: 120upx;
-		height: 60upx;
+		width: 100%;
+		height: 40upx;
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;
 		font-size: 28upx;
-		.icon {
-			height: 60upx;
-			margin-right: 5upx;
-			display: flex;
-			align-items: center;
-			font-size: 42upx;
-			color: #ffc50a;
-		}
+		// .icon {
+		// 	height: 60upx;
+		// 	margin-right: 5upx;
+		// 	display: flex;
+		// 	align-items: center;
+		// 	font-size: 42upx;
+		// 	color: #ffc50a;
+		// }
 	}
 	.input-box {
 		width: 100%;
@@ -548,7 +511,7 @@ page{position: relative;background-color: #fff;}
 }
 .place {
 	background-color: #ffffff;
-	height: 80upx;
+	height: 60upx;
 	/*  #ifdef  APP-PLUS  */
 	margin-top: var(--status-bar-height);
 	/*  #endif  */
@@ -634,12 +597,14 @@ page{position: relative;background-color: #fff;}
 }
 .banner {
 	width: 92%;
-	margin: 40upx 4%;
+	margin: 10upx 4%;
+	margin-top: 16upx;
+	
 	image {
 		width: 100%;
-		height: 20vw;
+		height: 30vw;
 		border-radius: 2vw;
-		box-shadow: 0upx 5upx 25upx rgba(0, 0, 0, 0.3);
+		box-shadow: 0upx 0upx 0upx rgba(0, 0, 0, 0.3);
 	}
 }
 .promotion {
@@ -647,7 +612,7 @@ page{position: relative;background-color: #fff;}
 	margin: 0 4%;
 	.text {
 		width: 100%;
-		height: 60upx;
+		height: 20upx;
 		font-size: 34upx;
 		font-weight: 600;
 		margin-top: -10upx;
@@ -724,6 +689,20 @@ page{position: relative;background-color: #fff;}
 		}
 	}
 }
+.goods-list1 {
+	// background-color: #f4f4f4;
+	.title1 {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 30upx;
+		color: #f47825;
+		font-size: 30upx;
+		margin-top: 0upx;
+		
+	}
+}
 .goods-list {
 	// background-color: #f4f4f4;
 	.title {
@@ -731,10 +710,10 @@ page{position: relative;background-color: #fff;}
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 80upx;
+		height: 50upx;
 		color: #f47825;
 		font-size: 30upx;
-		margin-top: 10upx;
+		margin-top: 1upx;
 		image {
 			width: 30upx;
 			height: 30upx;

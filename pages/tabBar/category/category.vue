@@ -3,14 +3,17 @@
 		<!-- 状态栏 -->
 		<view class="status" :style="{position:headerPosition}"></view>
         <view class="header" :style="{position:headerPosition}">
-			<view class="addr"><view class="icon location"></view>{{city}}</view>
+			<view class="addr">
+				<!-- <view class="icon location"></view> -->
+				{{city}}
+			</view>
 			<view class="input-box">
 				<input placeholder="默认关键字" placeholder-style="color:#c0c0c0;" @tap="toSearch()"/>
 				<view class="icon search"></view>
 			</view>
-			<view class="icon-btn">
+			<!-- <view class="icon-btn">
 				<view class="icon tongzhi" @tap="toMsg"></view>
-			</view>
+			</view> -->
 		</view>
 		<!-- 占位 -->
 		<view class="place"></view>
@@ -50,7 +53,7 @@
 			return {
 				showCategoryIndex:0,
 				headerPosition:"fixed",
-				city:"北京",
+				city:"档期查询",
 				//分类列表
 				categoryList:[
 					{id:1,title:'家用电器',banner:'/static/img/category/banner.jpg',list:[
